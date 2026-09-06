@@ -3,395 +3,404 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#070707" />
+  <meta name="theme-color" content="#000000" />
   <title>NetflixKey | PC Guide</title>
   <meta name="description" content="NetflixKey PC activation video guide." />
+  
+  <!-- Google Fonts for a modern, cinematic look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #050505;
-      --panel: #0d0d0f;
-      --panel-2: #121216;
-      --text: #ffffff;
-      --muted: #a9a9b2;
-      --red: #e50914;
-      --red-2: #ff2430;
-      --line: rgba(255,255,255,.08);
-      --shadow: 0 30px 80px rgba(0,0,0,.55);
+      --bg: #000000;
+      --surface: #0a0a0c;
+      --surface-glass: rgba(20, 20, 24, 0.6);
+      --border: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(229, 9, 20, 0.3);
+      --text-main: #ffffff;
+      --text-muted: #8b8b99;
+      --accent: #E50914;
+      --accent-hover: #ff1f2a;
+      --shadow-glow: 0 0 60px rgba(229, 9, 20, 0.15);
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 18% 0%, rgba(229,9,20,.17), transparent 33%),
-        radial-gradient(circle at 86% 15%, rgba(229,9,20,.08), transparent 28%),
-        linear-gradient(180deg, #080808 0%, #030303 68%, #000 100%);
+      overflow-x: hidden;
+      line-height: 1.5;
     }
 
-    body::before {
-      content: "";
+    /* Cinematic background glows */
+    .ambient-glow {
       position: fixed;
-      inset: 0;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      height: 60vh;
+      background: radial-gradient(circle, rgba(229,9,20,0.15) 0%, rgba(0,0,0,0) 70%);
+      z-index: -1;
       pointer-events: none;
-      background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, black, transparent 75%);
     }
 
-    a { color: inherit; text-decoration: none; }
+    a { text-decoration: none; color: inherit; }
 
-    .page {
-      width: min(1120px, calc(100% - 36px));
+    /* Layout */
+    .container {
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 24px 0 44px;
-      position: relative;
-      z-index: 1;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .topbar {
+    /* Floating Header Pill */
+    .header-pill {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(13,13,15,.72);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 18px 50px rgba(0,0,0,.24);
+      width: 100%;
+      max-width: 600px;
+      padding: 10px 16px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      margin-bottom: 60px;
+      animation: slideDown 0.6s ease-out;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 0;
     }
 
-    .logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      font-size: 24px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: white;
-      background: linear-gradient(145deg, var(--red-2), #a30008);
-      box-shadow: 0 10px 28px rgba(229,9,20,.28), inset 0 1px 0 rgba(255,255,255,.15);
-    }
-
-    .brand-copy { min-width: 0; }
-    .brand-name { font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
-    .brand-sub { margin-top: 2px; font-size: 12px; color: var(--muted); }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 11px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 999px;
-      color: #d8d8de;
-      background: rgba(255,255,255,.035);
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
       border-radius: 50%;
-      background: #36d677;
-      box-shadow: 0 0 0 4px rgba(54,214,119,.11);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 92px 10px 50px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid rgba(229,9,20,.24);
-      border-radius: 999px;
-      background: rgba(229,9,20,.07);
-      color: #ffb7bb;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 22px auto 16px;
-      max-width: 800px;
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: .98;
-      letter-spacing: -.055em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(120deg, #fff 20%, #ffc8cb 54%, #ff3641 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 660px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .guide-card {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(18,18,22,.92), rgba(10,10,12,.94));
-      box-shadow: var(--shadow);
-    }
-
-    .guide-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 13px 12px 18px;
-    }
-
-    .guide-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .pc-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      background: rgba(229,9,20,.11);
-      border: 1px solid rgba(229,9,20,.20);
-      color: #ff5c65;
-    }
-
-    .guide-title { font-size: 16px; font-weight: 800; }
-    .guide-sub { margin-top: 3px; color: var(--muted); font-size: 13px; }
-
-    .pc-only {
-      padding: 8px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.035);
-      color: #d8d8de;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .video-shell {
-      overflow: hidden;
-      border-radius: 18px;
-      background: #000;
-      border: 1px solid rgba(255,255,255,.06);
-      aspect-ratio: 16 / 9;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
-    }
-
-    .video-shell iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .step {
-      min-height: 132px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,.028);
-    }
-
-    .step-num {
-      width: 29px;
-      height: 29px;
-      border-radius: 9px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 14px;
-      font-weight: 900;
-      font-size: 12px;
-      background: rgba(229,9,20,.12);
-      border: 1px solid rgba(229,9,20,.22);
-      color: #ff6d75;
-    }
-
-    .step strong {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 7px;
-    }
-
-    .step span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .cta {
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #a1a1aa;
+      background: rgba(255,255,255,0.03);
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeIn 0.8s ease-out 0.2s both;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Desktop Video Guide */
+    .guide-wrapper {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow-glow);
+      animation: fadeIn 0.8s ease-out 0.4s both;
+    }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-glow);
+      background: #000;
+      position: relative;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Steps Area */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229, 9, 20, 0.4);
+      background: rgba(229, 9, 20, 0.02);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 80px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
-      margin: 28px 0 0;
+    }
+
+    .step-title::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .step-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 40px;
     }
 
     .btn {
-      appearance: none;
-      border: 0;
-      cursor: pointer;
-      padding: 13px 17px;
+      padding: 14px 28px;
       border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-      transition: transform .18s ease, filter .18s ease, border-color .18s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
     }
 
-    .btn:hover { transform: translateY(-1px); filter: brightness(1.07); }
-
     .btn-primary {
+      background: var(--accent);
       color: white;
-      background: linear-gradient(135deg, #f31a25, #c6000a);
-      box-shadow: 0 14px 34px rgba(229,9,20,.2);
+      box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
     }
 
     .btn-secondary {
-      color: #e7e7eb;
-      background: rgba(255,255,255,.045);
-      border: 1px solid var(--line);
+      background: transparent;
+      color: white;
+      border: 1px solid var(--border);
     }
 
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Footer */
     footer {
-      padding: 34px 0 0;
-      color: #74747d;
+      margin-top: 60px;
       text-align: center;
-      font-size: 12px;
+      color: #52525b;
+      font-size: 13px;
+      font-weight: 500;
     }
 
-    .mobile-message { display: none; }
-
-    @media (max-width: 767px) {
-      .page { width: min(100% - 24px, 620px); padding-top: 12px; }
-      .topbar { border-radius: 15px; padding: 12px; }
-      .status { display: none; }
-      .hero { padding: 72px 4px 34px; }
-      h1 { font-size: clamp(42px, 14vw, 58px); }
-      .hero p { font-size: 14px; }
-
-      /* Requested behavior: no video / PC guide on mobile. */
-      .desktop-guide { display: none !important; }
-
-      .mobile-message {
-        display: block;
-        margin-top: 4px;
-        padding: 26px 20px;
-        text-align: center;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: linear-gradient(180deg, rgba(18,18,22,.92), rgba(10,10,12,.94));
-        box-shadow: var(--shadow);
-      }
-
-      .mobile-message .icon {
-        width: 48px;
-        height: 48px;
-        margin: 0 auto 14px;
-        display: grid;
-        place-items: center;
-        border-radius: 14px;
-        background: rgba(229,9,20,.1);
-        border: 1px solid rgba(229,9,20,.18);
-      }
-
-      .mobile-message h2 { margin: 0 0 8px; font-size: 19px; }
-      .mobile-message p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    /* Mobile Message State */
+    .mobile-alert {
+      display: none;
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid rgba(229, 9, 20, 0.2);
+      border-radius: 24px;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
     }
 
-    @media (max-width: 900px) and (min-width: 768px) {
-      .steps { grid-template-columns: 1fr; }
+    .mobile-alert::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .alert-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(229, 9, 20, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--accent);
+    }
+
+    .mobile-alert h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .mobile-alert p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Rules */
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      .guide-wrapper { display: none; } /* Hide video on mobile */
+      .mobile-alert { display: block; animation: fadeIn 0.6s ease-out 0.4s both; }
+      .actions { flex-direction: column; width: 100%; }
+      .btn { width: 100%; text-align: center; }
+      .header-pill { justify-content: center; border: none; background: transparent; padding: 0;}
+      .status-badge { display: none; }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="https://netflixkey.xyz" target="_blank" rel="noopener noreferrer" aria-label="NetflixKey website">
-        <div class="logo">N</div>
-        <div class="brand-copy">
-          <div class="brand-name">NetflixKey</div>
-          <div class="brand-sub">Activation guide</div>
-        </div>
-      </a>
+  <div class="ambient-glow"></div>
 
-      <div class="status">
-        <span class="dot"></span>
-        Guide online
+  <main class="container">
+    
+    <!-- Top Navigation -->
+    <header class="header-pill">
+      <a href="https://netflixkey.xyz" target="_blank" rel="noopener noreferrer" class="brand">
+        <div class="logo-mark">N</div>
+        <span class="brand-name">NetflixKey</span>
+      </a>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        System Online
       </div>
     </header>
 
+    <!-- Hero Area -->
     <section class="hero">
-      <div class="eyebrow">PC walkthrough</div>
-      <h1><span class="gradient-text">Activate your key</span><br>without the guesswork.</h1>
-      <p>Watch the short desktop guide below and follow the steps to use your NetflixKey code correctly.</p>
+      <span class="hero-tag">PC Walkthrough</span>
+      <h1>Activate Your Key</h1>
+      <p>Watch the definitive desktop guide below to bypass the guesswork and unlock your access immediately.</p>
     </section>
 
-    <section class="guide-card desktop-guide">
-      <div class="guide-head">
-        <div class="guide-title-wrap">
-          <div class="pc-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="4" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M8 21H16M12 17V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="guide-title">PC / Desktop video guide</div>
-            <div class="guide-sub">Follow the video from start to finish.</div>
-          </div>
-        </div>
-        <div class="pc-only">Desktop only</div>
-      </div>
-
-      <div class="video-shell">
+    <!-- Desktop Guide Section (Hidden on Mobile) -->
+    <section class="guide-wrapper">
+      <div class="video-container">
         <iframe
           src="https://www.youtube-nocookie.com/embed/DqrDhut24F4?rel=0&modestbranding=1"
           title="NetflixKey PC Guide"
@@ -401,59 +410,82 @@
         </iframe>
       </div>
 
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <strong>Open the guide</strong>
-          <span>Play the video on your PC and keep this page open while following the walkthrough.</span>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Watch the Guide</h3>
+          <p class="step-desc">Keep this window open and watch the short walkthrough to understand the flow.</p>
         </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <strong>Follow every step</strong>
-          <span>Use the exact flow shown in the video so the activation process is completed correctly.</span>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Follow Exact Steps</h3>
+          <p class="step-desc">Replicate the exact process demonstrated in the video to ensure successful activation.</p>
         </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <strong>Go to NetflixKey</strong>
-          <span>When instructed, open netflixkey.xyz and continue with your activation code.</span>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Access the Portal</h3>
+          <p class="step-desc">Navigate to the main site when instructed and input your generated access code.</p>
         </div>
       </div>
 
-      <div class="cta">
-        <a class="btn btn-primary" href="https://netflixkey.xyz" target="_blank" rel="noopener noreferrer">Open netflixkey.xyz</a>
-        <button class="btn btn-secondary" type="button" id="copyBtn">Copy website</button>
+      <div class="actions">
+        <a href="https://netflixkey.xyz" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Open NetflixKey.xyz
+        </a>
+        <button class="btn btn-secondary" type="button" id="copyBtn">
+          Copy Website Link
+        </button>
       </div>
     </section>
 
-    <section class="mobile-message" aria-label="Mobile notice">
-      <div class="icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="7" y="2.8" width="10" height="18.4" rx="2.2" stroke="#ff5c65" stroke-width="1.8"/>
-          <path d="M10.4 5.8H13.6" stroke="#ff5c65" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="12" cy="18.2" r=".9" fill="#ff5c65"/>
+    <!-- Mobile Alert Section (Hidden on Desktop) -->
+    <section class="mobile-alert">
+      <div class="alert-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
         </svg>
       </div>
-      <h2>PC guide only</h2>
-      <p>This walkthrough is available on desktop. Open this page on your PC to watch the video.</p>
+      <h2>Desktop Required</h2>
+      <p>This interactive video walkthrough is designed exclusively for PC browsers. Please revisit this link on your desktop computer to view the guide.</p>
+      
+      <div class="actions">
+        <button class="btn btn-primary" type="button" id="copyBtnMobile">
+          Copy Link for Later
+        </button>
+      </div>
     </section>
 
-    <footer>NetflixKey Guide · netflixkey.xyz</footer>
+    <footer>
+      &copy; 2026 NetflixKey Guide &nbsp;&middot;&nbsp; netflixkey.xyz
+    </footer>
   </main>
 
   <script>
+    // Copy function handler
+    const handleCopy = async (btnElement) => {
+      const value = 'https://netflixkey.xyz';
+      const originalText = btnElement.innerText;
+      try {
+        await navigator.clipboard.writeText(value);
+        btnElement.innerText = '✓ Copied!';
+        setTimeout(() => btnElement.innerText = originalText, 2000);
+      } catch (err) {
+        window.prompt('Copy this URL manually:', value);
+      }
+    };
+
+    // Attach to desktop button
     const copyBtn = document.getElementById('copyBtn');
     if (copyBtn) {
-      copyBtn.addEventListener('click', async () => {
-        const value = 'https://netflixkey.xyz';
-        try {
-          await navigator.clipboard.writeText(value);
-          const oldText = copyBtn.textContent;
-          copyBtn.textContent = 'Copied!';
-          setTimeout(() => copyBtn.textContent = oldText, 1500);
-        } catch (_) {
-          window.prompt('Copy this website:', value);
-        }
-      });
+      copyBtn.addEventListener('click', () => handleCopy(copyBtn));
+    }
+
+    // Attach to mobile button
+    const copyBtnMobile = document.getElementById('copyBtnMobile');
+    if (copyBtnMobile) {
+      copyBtnMobile.addEventListener('click', () => handleCopy(copyBtnMobile));
     }
   </script>
 </body>
